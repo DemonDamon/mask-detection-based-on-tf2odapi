@@ -2,7 +2,7 @@
 [![TensorFlow 2.2](https://img.shields.io/badge/TensorFlow-2.3-FF6F00?logo=tensorflow)](https://github.com/tensorflow/tensorflow/releases/tag/v2.3.1)
 [![Python 3.6](https://img.shields.io/badge/Python-3.6-3776AB)](https://www.python.org/downloads/release/python-360/)
 
-This repository created for mask detection based on TensorFlow 2 Object Detection API. The pictures below are the results of EfficientDet trained on [Kaggle face mask detection dataset](https://www.kaggle.com/andrewmvd/face-mask-detection)
+This repository created for mask detection based on TensorFlow 2 Object Detection API. The pictures below are the results of [EfficientDet](https://arxiv.org/pdf/1911.09070v1.pdf) trained on [Kaggle face mask detection dataset](https://www.kaggle.com/andrewmvd/face-mask-detection), using pre-train model download from [here](http://download.tensorflow.org/models/object_detection/tf2/20200711/efficientdet_d0_coco17_tpu-32.tar.gz)
 <p align="center">
 <img src="dataset/test_images_output/test_2.png" width=676 height=450> </p>
 <p align="center">

@@ -26,9 +26,25 @@ This repository created for mask detection based on TensorFlow 2 Object Detectio
 
 
 ### Usage
+```bash
+# create conda virtual env
+conda create --name py36_tf23 python=3.6
 
+# activate py36_tf23 env
+conda activate py36_tf23
 
+# install requirements
+bash install.sh
+
+# install required cudnn. TensorFlow 2.1~2.3 require cudnn version 7.6
 conda install cudnn=7.6.4
+
+# set object_detection to the env path
+export PYTHONPATH=$PYTHONPATH:"pwd":"pwd"/"slim"
+
+# test install implement
+python object_detection/builders/model_builder_tf2_test.py
+```
 
 
 ```

@@ -54,13 +54,31 @@ python object_detection/builders/model_builder_tf2_test.py
 ```
 
 ### Training
-download the [Kaggle face mask detection dataset](https://www.kaggle.com/andrewmvd/face-mask-detection), and unzip files to [dataset](https://github.com/DemonDamon/mask-detection-based-on-tf2odapi/tree/main/dataset) folder, the structure is like
+download the [Kaggle face mask detection dataset](https://www.kaggle.com/andrewmvd/face-mask-detection), and unzip files to [dataset](https://github.com/DemonDamon/mask-detection-based-on-tf2odapi/tree/main/dataset) folder, the structure is like below
 
 | - dataset<br>
 | - - - annotations<br>
 | - - - images<br>
 
+```bash
+# convert xml to csv
+python xml_to_csv.py -x dataset/annotations -o dataset
 
+# split dataset to train and test
+python split_dataset.py -p dataset/annotations.csv -o dataset
+
+# create label map
+python create_labelmap.py -p dataset/annotations.csv -o dataset
+
+# generate tfrecord data format of train
+python generate_tfrecord.py --csv_input dataset/train_labels.csv --output_path dataset/train.record --img_path=dataset/images --label_map=dataset/labelmap.pbtxt
+
+# generate tfrecord data format of test
+python generate_tfrecord.py --csv_input dataset/test_labels.csv --output_path dataset/test.record --img_path=dataset/images --label_map=dataset/labelmap.pbtxt
+
+# start training
+python train.py -d dataset -m object_detection -t True -n 50000 -e 1000
+```
 
 ```
 "Speed/accuracy trade-offs for modern convolutional object detectors."

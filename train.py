@@ -9,7 +9,8 @@ import os
 ap = argparse.ArgumentParser()
 ap.add_argument("-d", "--data_path", type=str, required=True, help="path to dataset")
 ap.add_argument("-m", "--object_detection_path", type=str, required=True, help="path to object detection")
-ap.add_argument("-t", "--num_train_steps", type=int, default=5000, help="number of training steps")
+ap.add_argument("-t", "--is_train", type=bool, default=False, help="whether need to train again")
+ap.add_argument("-n", "--num_train_steps", type=int, default=5000, help="number of training steps")
 ap.add_argument("-e", "--num_eval_steps", type=int, default=100, help="number of evaluation steps")
 args = vars(ap.parse_args())
 
@@ -45,11 +46,6 @@ batch_size = MODELS_CONFIG[selected_model]['batch_size']
 pretrained_download_models_path = os.path.join(ROOT_PATH, "downloaded_finetune_models") 
 if not os.path.exists(pretrained_download_models_path):
     os.mkdir(pretrained_download_models_path)
-
-# where we save designated pretrained model used for training
-# designated_pretrained_model_path = os.path.join(pretrained_download_models_path, MODEL_NAME)
-# if not os.path.exists(designated_pretrained_model_path):
-#     os.mkdir(designated_pretrained_model_path)
 
 # where we save all trained models on our custom datasets
 custom_trained_models_path = os.path.join(ROOT_PATH, "custom_trained_models")
@@ -87,9 +83,6 @@ test_record_fname = os.path.join(args["data_path"], 'test.record')
 train_record_fname = os.path.join(args["data_path"],'train.record')
 labelmap_pbtxt_fname = os.path.join(args["data_path"], 'labelmap.pbtxt')
 finetune_checkpoint = os.path.join(pretrained_download_models_path, MODEL_NAME, "checkpoint/ckpt-0")
-
-# change os directory to research
-# os.chdir(args["object_detection_path"])
 
 import re
 import sys
@@ -135,5 +128,15 @@ with open(pipeline_fname, 'w') as f:
 
 print("[INFO] modified config file based on our custom parameters")
 
-# start training
-os.system("python object_detection/model_main_tf2.py --pipeline_config_path={} --model_dir={} --alsologtostderr --num_train_steps={} --sample_1_of_n_eval_examples={} --num_eval_steps={}".format(pipeline_fname, os.path.join(custom_trained_models_path, MODEL_NAME), num_steps, 1, num_eval_steps))
+if args["is_train"]:
+    # start training
+    os.system("python object_detection/model_main_tf2.py --pipeline_config_path={} --model_dir={} --alsologtostderr --num_train_steps={} --sample_1_of_n_eval_examples={} --num_eval_steps={}".
+        format(pipeline_fname, os.path.join(custom_trained_models_path, MODEL_NAME), num_steps, 1, num_eval_steps))
+    print("[INFO] training done")
+
+# export model's final checkpoint 
+trained_checkpoint_dir = os.path.join(custom_trained_models_path, MODEL_NAME)
+output_directory = os.path.join(trained_checkpoint_dir, "export")
+os.system("python object_detection/exporter_main_v2.py --trained_checkpoint_dir={} --output_directory={} --pipeline_config_path={}"
+    .format(trained_checkpoint_dir, output_directory, pipeline_fname))
+print("[INFO] export custom trained model's final checkpoint to => {}".format(output_directory))

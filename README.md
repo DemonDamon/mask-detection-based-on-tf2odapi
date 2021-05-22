@@ -6,6 +6,8 @@ This repo created for mask detection based on TensorFlow 2 Object Detection API
 <p align="center">
 <img src="dataset/test_images_output/test_2.png" width=676 height=450> </p>
 <p align="center">
+<img src="dataset/test_images_output/test_3.jpg" width=676 height=450> </p>
+<p align="center">
 <img src="dataset/test_images_output/test_6.jpg" width=676 height=450> </p>
 <p align="center">
 <img src="dataset/test_images_output/test_5.jpg" width=676 height=450> </p>

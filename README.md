@@ -80,11 +80,12 @@ python generate_tfrecord.py --csv_input dataset/test_labels.csv --output_path da
 python train.py -d dataset -m object_detection -t True -n 50000 -e 1000
 ```
 
-### inference
+### Inference
 ```bash
 python inference_image.py -p custom_trained_models/efficientdet_d0_coco17_tpu-32/export -l 'dataset/labelmap.pbtxt' -i dataset/test_images/test_1.jpg -o dataset/test_images_output/test_1.jpg
 ```
 
+## Citation
 ```
 "Speed/accuracy trade-offs for modern convolutional object detectors."
 Huang J, Rathod V, Sun C, Zhu M, Korattikara A, Fathi A, Fischer I, Wojna Z,

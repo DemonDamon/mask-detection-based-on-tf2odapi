@@ -56,9 +56,9 @@ python object_detection/builders/model_builder_tf2_test.py
 ### Training
 download the [Kaggle face mask detection dataset](https://www.kaggle.com/andrewmvd/face-mask-detection), and unzip files to [dataset](https://github.com/DemonDamon/mask-detection-based-on-tf2odapi/tree/main/dataset) folder, the structure is like
 
-| - dataset
-| - - - annotations
-| - - - images
+| - dataset<br>
+| - - - annotations<br>
+| - - - images<br>
 
 
 

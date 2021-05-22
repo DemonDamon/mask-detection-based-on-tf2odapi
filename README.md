@@ -76,8 +76,13 @@ python generate_tfrecord.py --csv_input dataset/train_labels.csv --output_path d
 # generate tfrecord data format of test
 python generate_tfrecord.py --csv_input dataset/test_labels.csv --output_path dataset/test.record --img_path=dataset/images --label_map=dataset/labelmap.pbtxt
 
-# start training
+# start training and export models
 python train.py -d dataset -m object_detection -t True -n 50000 -e 1000
+```
+
+### inference
+```bash
+python inference_image.py -p custom_trained_models/efficientdet_d0_coco17_tpu-32/export -l 'dataset/labelmap.pbtxt' -i dataset/test_images/test_1.jpg -o dataset/test_images_output/test_1.jpg
 ```
 
 ```

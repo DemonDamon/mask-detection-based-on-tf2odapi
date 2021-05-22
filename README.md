@@ -2,6 +2,10 @@
 [![TensorFlow 2.2](https://img.shields.io/badge/TensorFlow-2.3-FF6F00?logo=tensorflow)](https://github.com/tensorflow/tensorflow/releases/tag/v2.3.1)
 [![Python 3.6](https://img.shields.io/badge/Python-3.6-3776AB)](https://www.python.org/downloads/release/python-360/)
 
+<p align="center">
+  <img src="object_detection/g3doc/img/tf-od-api-logo.png" width=140 height=195>
+</p>
+
 This repository created for mask detection based on TensorFlow 2 Object Detection API. The pictures below are the results of [EfficientDet](https://arxiv.org/pdf/1911.09070v1.pdf) trained on [Kaggle face mask detection dataset](https://www.kaggle.com/andrewmvd/face-mask-detection), using pre-train model download from [here](http://download.tensorflow.org/models/object_detection/tf2/20200711/efficientdet_d0_coco17_tpu-32.tar.gz)
 <p align="center">
 <img src="dataset/test_images_output/test_2.png" width=676 height=450> </p>
@@ -26,5 +30,14 @@ This repository created for mask detection based on TensorFlow 2 Object Detectio
   *   pycocotools==2.0.0
   *   pyyaml==5.4.1
 
+### usage
+
 
 conda install cudnn=7.6.4
+
+
+```
+"Speed/accuracy trade-offs for modern convolutional object detectors."
+Huang J, Rathod V, Sun C, Zhu M, Korattikara A, Fathi A, Fischer I, Wojna Z,
+Song Y, Guadarrama S, Murphy K, CVPR 2017
+```

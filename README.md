@@ -3,18 +3,18 @@
 [![Python 3.6](https://img.shields.io/badge/Python-3.6-3776AB)](https://www.python.org/downloads/release/python-360/)
 
 
-# Introduction 
+## Introduction 
 This repository created for mask detection based on TensorFlow 2 Object Detection API. The pictures below are the results of [EfficientDet](https://arxiv.org/pdf/1911.09070v1.pdf) trained on [Kaggle face mask detection dataset](https://www.kaggle.com/andrewmvd/face-mask-detection), using pre-train model download from [here](http://download.tensorflow.org/models/object_detection/tf2/20200711/efficientdet_d0_coco17_tpu-32.tar.gz).<p align="center"><img src="dataset/test_images_output/test_2.png" width=676 height=450> </p><p align="center"><img src="dataset/test_images_output/test_3.jpg" width=676 height=450> </p><p align="center"><img src="dataset/test_images_output/test_6.jpg" width=676 height=450> </p><p align="center"><img src="dataset/test_images_output/test_5.jpg" width=676 height=450> </p>The latest [Object Detection API with TensorFlow 2](https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/tf2.md) installation will set [TensorFlow 2.5.0](https://github.com/tensorflow/tensorflow/releases/tag/v2.5.0) as default option, which means you have to upgrade your CUDA driver to 460 or higher, and CUDA version to 11.2. That would be time-consuming. So I split [object_detection](https://github.com/tensorflow/models/tree/master/research/object_detection) and [slim](https://github.com/tensorflow/models/tree/master/research/slim) which I will import in the following training, from [research](https://github.com/tensorflow/models/tree/master/research) in [models](https://github.com/tensorflow/models). Likewise [official](https://github.com/tensorflow/models/tree/master/official) API is also needed, and I put it in same directory with object_detection and slim in my repo. Now it can be trained under TensorFlow-gpu 2.3 without changing GPU environment, following the steps in Usage below.
 
 
-# Environment
+## Environment
   *   ubuntu 16.04.9 LTS
   *   python 3.6
   *   CUDA 10.1
   *   Driver version 440
 
 
-# Requirements
+## Requirements
   *   Cython==3.0a6
   *   tf_slim==1.1.0
   *   lvis==0.5.3
@@ -25,10 +25,15 @@ This repository created for mask detection based on TensorFlow 2 Object Detectio
   *   pyyaml==5.4.1
 
 
-# Usage
+## Usage
 
 ### Installation
 ```bash
+# git clone project
+git clone https://github.com/DemonDamon/mask-detection-based-on-tf2odapi.git
+
+cd mask-detection-based-on-tf2odapi
+
 # create conda virtual env
 conda create --name py36_tf23 python=3.6
 
@@ -47,6 +52,14 @@ export PYTHONPATH=$PYTHONPATH:"pwd":"pwd"/"slim"
 # test the installation 
 python object_detection/builders/model_builder_tf2_test.py
 ```
+
+### Training
+download the [Kaggle face mask detection dataset](https://www.kaggle.com/andrewmvd/face-mask-detection), and unzip files to [dataset](https://github.com/DemonDamon/mask-detection-based-on-tf2odapi/tree/main/dataset) folder, the structure is like
+
+| - dataset
+| - - - annotations
+| - - - images
+
 
 
 ```

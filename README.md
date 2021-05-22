@@ -12,7 +12,7 @@ This repository created for mask detection based on TensorFlow 2 Object Detectio
 <img src="dataset/test_images_output/test_6.jpg" width=676 height=450> </p>
 <p align="center">
 <img src="dataset/test_images_output/test_5.jpg" width=676 height=450> </p>
-The latest [Object Detection API with TensorFlow 2](https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/tf2.md) installation will set [TensorFlow 2.5.0](https://github.com/tensorflow/tensorflow/releases/tag/v2.5.0) as default option, which means you have to upgrade your CUDA driver to 460 or higher, and CUDA version to 11.2. That would be time-consuming
+The latest [Object Detection API with TensorFlow 2](https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/tf2.md) installation will set [TensorFlow 2.5.0](https://github.com/tensorflow/tensorflow/releases/tag/v2.5.0) as default option, which means you have to upgrade your CUDA driver to 460 or higher, and CUDA version to 11.2. That would be time-consuming.
 
 ### environment
   *   ubuntu 16.04.9 LTS

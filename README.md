@@ -11,6 +11,7 @@ This repository created for mask detection based on TensorFlow 2 Object Detectio
   *   ubuntu 16.04.9 LTS
   *   python 3.6
   *   CUDA 10.1
+  *   cuDNN 7.6.5
   *   Driver version 440
 
 

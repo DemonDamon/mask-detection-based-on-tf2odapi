@@ -80,6 +80,8 @@ python generate_tfrecord.py --csv_input dataset/test_labels.csv --output_path da
 # start training and export models
 python train.py -d dataset -m object_detection -t True -n 50000 -e 1000
 ```
+#### Customed Trained Face-mask based on Effeicientdet
+I have trained my customed model, which could be used in inference directly, the link is [here](https://pan.baidu.com/s/1MephVo2PxdFrnwvu8po_Hw), codes: 9nc5 
 
 #### Inference
 ```bash
